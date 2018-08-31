@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar color="secondary">
+        <ion-title class="tit">
+            TODO-LIST
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-input [(ngModel)]="todo" placeholder="What to do kid?" type="text"></ion-input>
+    </ion-item>
+
+    <button ion-button full (click)="add()">ADD</button>
+
+    <ion-list>
+        <ion-item-sliding *ngFor="let t of todos">
+            <ion-item>
+                {{t}}
+                  <button class="butt" ion-button color="danger" (click)="delete(t)">Delete
+                    <ion-icon name="trash"></ion-icon>
+                  </button>
+
+                  <button class="butt" ion-button color="secondary" (click)="edit(t)">Edit
+                      <ion-icon name="secondary"></ion-icon>
+                  </button>
+            </ion-item>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>
