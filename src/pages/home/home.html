@@ -1,30 +1,13 @@
-<ion-header>
-    <ion-navbar color="secondary">
-        <ion-title class="tit">
-            TODO-LIST
-        </ion-title>
-    </ion-navbar>
-</ion-header>
-
 <ion-content>
-    <ion-item>
-        <ion-input [(ngModel)]="todo" placeholder="What to do kid?" type="text"></ion-input>
-    </ion-item>
+  <img src="../../assets/imgs/bSmart-LOGO.png" alt="LOGO">
 
-    <button ion-button full (click)="add()">ADD</button>
+    <div class="input" no-lines>
+      <ion-input type="text" placeholder="Email" [(ngModel)]="user.email"></ion-input>
 
-    <ion-list>
-        <ion-item-sliding *ngFor="let t of todos">
-            <ion-item>
-                {{t}}
-                  <button class="butt" ion-button color="danger" (click)="delete(t)">Delete
-                    <ion-icon name="trash"></ion-icon>
-                  </button>
+      <ion-input class="password" type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
+    </div>
 
-                  <button class="butt" ion-button color="secondary" (click)="edit(t)">Edit
-                      <ion-icon name="secondary"></ion-icon>
-                  </button>
-            </ion-item>
-        </ion-item-sliding>
-    </ion-list>
+    <div text-center>
+      <button class="button" color="secondary" ion-button (click)="login(user)">LOGIN</button>
+    </div>
 </ion-content>

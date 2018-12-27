@@ -1,80 +1,70 @@
 import { Component } from '@angular/core';
-import { NavController,AlertController } from 'ionic-angular';
+import { NavController,AlertController, ToastController, MenuController  } from 'ionic-angular';
+
+import { NavParams } from 'ionic-angular/navigation/nav-params';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { User } from '../../app/models/user';
+import { Item } from '../../app/models/item';
+import { Service } from '../../app/services/service';
+import { BudgettingPage } from '../budgetting/budgetting';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
-  todos: string[] = [];
-  todo: string;
+  birthItems: any;
+  user = {} as User;
+  items: Item[];
 
-  constructor(public navCtrl: NavController, private alertController: AlertController) {
+  isSearchbarOpened = false;
 
+  constructor(public navCtrl: NavController,
+              public itemService:Service,
+              private alertCtrl: AlertController,
+              private authAf: AngularFireAuth,
+              public navParams: NavParams,
+              public toastCtrl: ToastController,
+              public menu: MenuController) {
+                
+                //to disable side-menu on login page 
+                this.menu.enable(false, 'myMenu');
+
+                this.itemService.getBirthItems().subscribe(birthItems => {
+                  this.birthItems = birthItems;
+                  console.log(this.birthItems);
+                });
+
+              }
+
+  async login(user: User){
+    this.authAf.auth.signInWithEmailAndPassword(user.email, user.password)
+    .then(data=>{
+      this.navCtrl.setRoot(BudgettingPage,{
+        birthItems: this.birthItems
+      });
+
+      this.toast('Welcome! ');
+      this.alert('Select an inclusion(s) that you want to update.');
+    })
+    .catch(error =>{
+      this.alert(error.message);
+    })
   }
 
-  ionViewDidLoad(){
-
+  alert(message: string){
+    this.alertCtrl.create({
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
   }
 
-  add() {
-    let addTodoAlert = this.alertController.create({
-        
-        message:"Successfully Added!",
-        buttons:[{
-            text:"OK"
-        }
-    ]
-    });
-    addTodoAlert.present()
-    this.todos.push(this.todo);
-    this.todo = "";    
-}
-
-delete(item) {
-    let delTodoAlert = this.alertController.create({
-        
-        message:"Successfully Deleted!",
-        buttons:[{
-            text:"OK"
-        }
-    ]
-    });
-    delTodoAlert.present()
-    var index = this.todos.indexOf(item, 0);
-    if (index > -1) {
-        this.todos.splice(index, 1);
-    }
-}
-
-edit(item){
-    var index = this.todos.indexOf(item,0)
-    let editTodoAlert = this.alertController.create({
-        title:"Edit Todo",
-        message:"Please Input!",
-        inputs:[
-        {
-            type:"text",
-            name:"editTodoInput",
-            placeholder:item,
-        }],
-        buttons:[
-        {
-        text:"Update",
-        handler:(inputData)=>{
-            let todoText;
-            todoText = inputData.editTodoInput;
-            this.todos.splice(index,1);
-            this.todos.push(todoText);    
-        }   
-        }],
-    });
-    editTodoAlert.present()
-    // if (index > -1){
-    //     this.todos.splice(index,1);
-    //     this.todo = item;
-    // }
-}
+  toast(message: string){
+    this.toastCtrl.create({
+      message: message + this.user.email,
+      duration: 3000
+    }).present();
+  }
 
 }

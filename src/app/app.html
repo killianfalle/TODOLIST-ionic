@@ -1,1 +1,35 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu id="myMenu" [content]="content">
+
+    <ion-header [elasticHeader]="myContent">
+        <ion-navbar color="secondary">
+            <ion-title text-center *ngIf="!isSearchbarOpened">
+                Advertiser
+            </ion-title>
+            <ion-searchbar *ngIf="isSearchbarOpened" type="text" [(ngModel)]="term" placeholder="Search" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+            <ion-buttons right>
+                <button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+                <ion-icon name="search"></ion-icon>
+                </button>
+            </ion-buttons>
+        </ion-navbar>
+    </ion-header>
+    
+    <ion-content padding fullscreen #myContent>
+        <ion-list class="pageList">
+            <button ion-item menuClose *ngFor="let p of pages | filter: term" [class.activeHighLight]="checkActive(p)" (click)="openPage(p)">
+                <ion-icon class="icon" name="{{p.icon}}"></ion-icon>
+                <span class="titleText">{{p.title}}</span>
+            </button>
+        </ion-list> 
+    </ion-content>
+
+    <ion-footer>
+        <ion-toolbar>
+                <button menuClose ion-button full clear icon-left *ngFor="let l of logout" (click)="logoutPage(l)">
+                    <ion-icon color="secondary" name="log-out"><a class="closeText">{{l.title}}</a></ion-icon>
+                </button>
+        </ion-toolbar>
+    </ion-footer>
+
+</ion-menu>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

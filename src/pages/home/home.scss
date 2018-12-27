@@ -1,11 +1,17 @@
 page-home {
-
+  .button{
+    border-radius:10px;
+    margin-top: 45px;
+    font-size: 13px;
+    width: 85%;
+  }
+  .password{
+    margin-top: 25px;
+  }
+  ion-input{
+    margin: auto;
+    width: 83.5%!important;
+    border-bottom: 1px solid #05c3b2;
+  }
 }
 
-.butt{
-    float: right;
-}
-
-.tit{
-    text-align: center;
-}

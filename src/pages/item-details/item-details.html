@@ -1,0 +1,33 @@
+
+<ion-header [elasticHeader]="myContent">
+
+    <ion-navbar color="secondary">
+      <ion-title class="title">Details</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding fullscreen #myContent>
+  
+      <ion-list>
+          <ion-item no-padding>
+              <ion-item no-lines class="incName">
+                {{checked}}
+              </ion-item>
+                <ion-slides autoplay="1500" loop="true" speed="1000">
+                    <ion-slide *ngFor="let img of imageDetails.itemDetails.images">
+                        <img src="{{img.childImgName}}">
+                    </ion-slide>
+                </ion-slides>
+                <div class="text">
+                    <p>Location:</p> <h2>{{imageDetails.itemDetails.Location}}</h2>
+                    <p>Provider:</p> <h2>{{imageDetails.itemDetails.provider}}</h2>
+                    <p>Contact:</p> <h2>{{imageDetails.itemDetails.contact}}</h2>
+                </div>
+          </ion-item>
+      </ion-list>
+  
+  </ion-content>
+  
+  
