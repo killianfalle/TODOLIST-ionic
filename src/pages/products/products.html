@@ -32,7 +32,7 @@
             <ion-slide *ngFor="let item of check.itemList.itemName; let i = index;">                
               <h2>{{item.name}}</h2>
               <h2 class="price">{{item.price | currency:'₱'}}</h2>
-              <img class="imageSize" src="{{item.imageUrl.imageName}}" (click)="imgDetail(item)">
+              <img class="imageSize" src="{{item.itemDetails.imageUrl}}" (click)="imgDetail(item)">
             </ion-slide>
           </ion-slides>
       

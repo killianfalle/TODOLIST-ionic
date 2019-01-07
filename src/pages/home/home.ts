@@ -15,6 +15,9 @@ import { BudgettingPage } from '../budgetting/budgetting';
 export class HomePage {
 
   birthItems: any;
+  christItems: any;
+  wedItems: any;
+
   user = {} as User;
   items: Item[];
 
@@ -36,6 +39,15 @@ export class HomePage {
                   console.log(this.birthItems);
                 });
 
+                // this.itemService.getChristItems().subscribe(christItems => {
+                //   this.christItems = christItems;
+                //   console.log(this.christItems);
+                // });
+
+                // this.itemService.getWedItems().subscribe(wedItems => {
+                //   this.wedItems = wedItems;
+                //   console.log(this.wedItems);
+                // });
               }
 
   async login(user: User){

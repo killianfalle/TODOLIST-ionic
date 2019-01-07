@@ -34,7 +34,7 @@ export class ProductsPage {
   imgDetail(item){
     this.navCtrl.push(ItemDetailsPage,{
       data: item.name,
-      itemDetail: item.imageUrl
+      itemDetail: item.itemDetails
     });
   }
 

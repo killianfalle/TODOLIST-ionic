@@ -17,10 +17,13 @@
 <ion-content padding fullscreen #myContent>
 
     <ion-item *ngFor = "let check of checked | filter: term; let i = index" no-padding>
-        <ion-item no-lines class="incName">
-          {{check.name}}
-        </ion-item>
-    
+        
+      <ion-item no-lines class="incName">
+        <div class="text">
+          <p class="label">Item Name:</p> <input class="inputTextTitle" ion-input type="text" [(ngModel)]="check.name" name="name">
+        </div>
+      </ion-item>
+
       <ion-item class="item" no-lines *ngFor="let item of check.itemList.itemName; let i = index;">
           <ion-fab top right>
               <button ion-fab>
@@ -29,22 +32,16 @@
               <a class="likes">{{item.likes}}</a>
           </ion-fab>
 
-          <ion-fab top left>
-              <button ion-fab>
-                  <ion-icon class="fabIcon" [name]="item.dislikes? 'sad' : 'happy'"></ion-icon>
-              </button>
-              <a class="likes">{{item.dislikes}}</a>
-          </ion-fab>  
-        
           <div text-center>
-            <img src="{{item.imageUrl.imageName}}" imageViewer>
+            <img src="{{item.itemDetails.imageUrl}}" imageViewer>
           </div> 
           <div class="text">
-            <p class="label">Name:</p> <input class="inputText" ion-input type="text" placeholder="Add Name" [(ngModel)]="item.name" name="name">
-            <p class="label">Price:</p> <input class="inputText" ion-input type="text" placeholder="Add Price" [(ngModel)]="item.price" name="price">
-            <p class="label">Location:</p> <input class="inputText" ion-input type="text" placeholder="Add Location" [(ngModel)]="item.imageUrl.itemDetails.Location" name="location">
-            <p class="label">Provider:</p> <input class="inputText" ion-input type="text" placeholder="Add Provider" [(ngModel)]="item.imageUrl.itemDetails.provider" name="provider">
-            <p class="label">Contact:</p> <input class="inputText" ion-input type="text" placeholder="Add Contact" [(ngModel)]="item.imageUrl.itemDetails.contact" name="contact">
+            <p class="label">Product Name:</p> <input class="inputText" ion-input type="text" [(ngModel)]="item.name" name="name">
+            <p class="label">Price:</p> <input class="inputText" ion-input type="text" [(ngModel)]="item.price" name="price">
+            <p class="label">Location:</p> <input class="inputText" ion-input type="text" [(ngModel)]="item.itemDetails.moreDetails.location" name="location">
+            <p class="label">Provider:</p> <input class="inputText" ion-input type="text" [(ngModel)]="item.itemDetails.moreDetails.provider" name="provider">
+            <p class="label">Contact:</p> <input class="inputText" ion-input type="text" [(ngModel)]="item.itemDetails.moreDetails.contact" name="contact">
+            <p class="label">Description:</p> <input class="inputText" ion-input type="text" [(ngModel)]="item.itemDetails.moreDetails.description" name="description">
           </div>
       </ion-item>
       

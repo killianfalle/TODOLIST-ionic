@@ -30,7 +30,7 @@ import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
     BudgettingPage,
     EditPage,
     ItemDetailsPage,
-    ProductsPage
+    ProductsPage,
   ],
   imports: [
     BrowserModule,
