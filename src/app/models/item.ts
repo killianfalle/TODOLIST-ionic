@@ -7,6 +7,8 @@
     itemName?: object;
     moreDetails?: object;
     itemList?: object;
+    subItems?: object;
+    subDesc?: string;
     userId?: string;
     users?: object;
   }

@@ -7,10 +7,30 @@ page-edit {
     ion-title{
         margin-left: -10px;
     }
+
+    ion-content{
+        background-color: #fafafa!important;
+    }
+
+    //ion-item
+    .item-md {
+        margin-bottom: 25px!important;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        box-shadow: 1px 9px 10px #dbdbdb;
+        width: 97%;
+        margin: auto;
+    }
+    .item-md.item-block .item-inner {
+        padding-right: 0px!important;
+    }
+    ion-item{
+        background-color: white!important;
+        border-radius: 10px;
+    }
+
     .updateButton{
-        margin-left:20px;
         border-radius:10px;
-        border: none;
         width: 85%;
     }
     .searchbar-md .searchbar-input {
@@ -19,16 +39,28 @@ page-edit {
     .searchbar-md .searchbar-clear-icon {
         right: 25px!important;
     }
-    img{
-        width:50%;
+
+    //IMAGES
+    .subImage{
+        height: 100px!important;
+        width: 150px!important;
+        object-fit: fill;
+        overflow: hidden;
     }
+    .parentImage{
+        height: 250px!important;
+        width: 250px!important;
+        object-fit: fill;
+        overflow: hidden;
+    }
+
     .inputText{
         margin-top: 18px!important;
         margin-left:13px;
         margin-bottom: 5px;
     }
     input[type=text]{
-        width:96%;
+        width:90%;
         border: none;
         border-bottom: 1px solid rgba(0, 0, 0, 0.550);
         font-size: 17px;
@@ -48,12 +80,18 @@ page-edit {
         color: #05c3b2;
         font-family: sans-serif;
     }
+    .text .subLabel{
+        margin: 15px 0px -16px -73px!important;
+        color: #05c3b2;
+        font-family: sans-serif;
+    }
     .inputTextTitle{
         font-size: 28px!important;
         border: none!important;
         margin-top: 18px!important;
         margin-left:13px;
         margin-bottom: 5px;
+        background-color: transparent;
     }
     .updateButton{
         border-radius:20px;
@@ -71,7 +109,7 @@ page-edit {
         font-size: 16px;
     }
     .item-md .item-button {
-        margin-bottom: 20px;
+        margin-top: 30px;
         height: 35px !important;
     }
     .fab-md{
@@ -96,5 +134,49 @@ page-edit {
         font-weight: bold;
         margin-top: 12px;
         font-family: sans-serif;
+    }
+
+    //text inside Sub Item
+    .subPriceText{
+        font-size: 13px!important;
+        color: #757575!important;
+    }
+    .subNameText{
+        font-size: 17px!important;
+    }
+    //Sub Sliders
+    .subSlide{
+        margin-top:20px;
+    }
+    .subSlider{
+        margin-top:10px;
+        // border-top: 1px solid rgb(202, 202, 202);
+        width: 98%;
+        margin-left: -8px;
+    }
+    .subCard{
+        width: calc(100% - 10px)!important;
+    }
+    .subAdd-button{
+        border-radius: 5px;
+        margin-left: -3px;
+        height: 28px;
+    }
+
+    //Category Name
+    .catName{
+        height:20px;
+        margin-top: -10px;
+    }
+    .catSave{
+        font-size:10px!important;
+    }
+
+    //Progress Bar
+    .swiper-pagination-progress .swiper-pagination-progressbar {
+        background: #00ad9f!important;
+    }
+    .swiper-container-horizontal > .swiper-pagination-progress {
+        height: 1px!important;
     }
 }

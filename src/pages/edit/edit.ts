@@ -24,7 +24,7 @@ export class EditPage {
     console.log(this.checked);
   }
 
-  addItem(item){
+  updateItem(item){
     this.itemService.updateItem(item);
     const toast = this.toastCtrl.create({
       message: 'Successfully updated item!',

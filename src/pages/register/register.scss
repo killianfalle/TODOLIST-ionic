@@ -1,0 +1,22 @@
+page-register {
+    .goBack{
+        margin-top: 15px!important;
+        font-size: 13px;
+        text-decoration: underline;
+        color:#05c3b2;
+    }
+    .password{
+        margin-top: 25px;
+    }
+    ion-input{
+        margin: auto;
+        width: 83.5%!important;
+        border-bottom: 1px solid #05c3b2;
+    }
+    .regButton{
+        margin-top: 45px!important;
+        border-radius:10px;
+        font-size: 13px;
+        width: 85%;
+    }
+}

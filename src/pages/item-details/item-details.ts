@@ -17,6 +17,7 @@ import { Service } from '../../app/services/service';
 export class ItemDetailsPage {
 
   checked: any;
+  subChecked: any;
   imageDetails: any;
 
   constructor(public navCtrl: NavController, 
@@ -24,6 +25,7 @@ export class ItemDetailsPage {
               public itemService: Service,
               public toastCtrl: ToastController) {
     this.checked=navParams.get('data');
+    this.subChecked = navParams.get('subData');
     this.imageDetails=navParams.get('itemDetail');
   }
 

@@ -1,6 +1,10 @@
 page-item-details {
     ion-slide{
         padding:20px 50px 20px 50px;
+        margin-top: 20px;
+    }
+    ion-slides {
+        margin-top: 20px;
     }
     .incName{
         color: #494949!important;
@@ -29,5 +33,34 @@ page-item-details {
     .incText{
         font-size: 25px;
         color: #00ad9f;
+    }
+
+    //IMAGES
+    .subImage{
+        height: 100px!important;
+        width: 150px!important;
+        object-fit: fill;
+        overflow: hidden;
+        display: initial!important;
+    }
+    .parentImage{
+        height: 250px!important;
+        width: 250px!important;
+        object-fit: fill;
+        overflow: hidden;
+    }
+
+    //subTexts
+    .subText{
+        margin-left: 0px !important;
+    }
+
+    //Progress Bar
+    .swiper-pagination-progress .swiper-pagination-progressbar {
+        background: #00ad9f!important;
+    }
+    .swiper-container-horizontal > .swiper-pagination-progress {
+        margin-top:10px;
+        height: 1px!important;
     }
 }

@@ -1,12 +1,16 @@
 page-budgetting {
-    .price{
-        color:#009688!important;
-        margin-bottom: 13px;
+    ion-content{
+        background-color: #fafafa!important;
     }
-    ion-slide{
-        margin: 0px;
-        padding:20px 50px 20px 50px;
+    ion-item{
+        background-color: white!important;
+        border-radius: 10px;
     }
+    ion-slides{
+        height: auto!important;
+    }
+
+    //username
     .hide{
         display: block!important;
     }
@@ -15,11 +19,234 @@ page-budgetting {
         font-size: 12px;
         font-family: sans-serif;
     }
+
+
+    //close BUtton for Budget Input
+    .closeIcon{
+        font-size: 14px;
+    }
+
+    
+    //IMAGES
+    .subImage{
+        height: 100px!important;
+        width: 150px!important;
+        object-fit: fill;
+        overflow: hidden;
+        display: initial!important;
+    }
+    .parentImage{
+        max-width: 60%!important;
+        max-height: 60%!important;
+        object-fit: fill;
+        overflow: hidden;
+        display: block;
+    }
+
+    //TOTAL PRICE in NAVBAR
+    .totalPriceNav{
+        color: white!important;
+        font-size: 12px;
+        margin-top: 13px;
+        float: right;
+        padding-right: 35px;
+    }
+
+    //UPDATE BUTTON
+    .updateButton{
+        float:right;
+        border-radius:20px;
+        padding:8px!important;
+        font-size: 12px;
+        color: white;
+        font-family: sans-serif;
+        margin-bottom:20px;
+    }
+    .updateText{
+        color: white;
+        padding-left: 9px;
+        font-size: 11px;
+        font-family: sans-serif;
+    }
+
+    //Sub Sliders
+    .subSlide{
+        margin-top:8px;
+        // width: 150px!important;
+    }
+    .subSlider{
+        margin-top:10px;
+        // border-top: 1px solid rgb(202, 202, 202);
+        width: 98%;
+        margin-left: -8px;
+    }
+    .subCard{
+        width: calc(100% - 10px)!important;
+    }
+    .subAdd-button{
+        border-radius: 5px;
+        margin-left: -3px;
+        height: 28px;
+    }
+
+    //Progress Bar
+    .swiper-pagination-progress .swiper-pagination-progressbar {
+        background: #00ad9f!important;
+    }
+    .swiper-container-horizontal > .swiper-pagination-progress {
+        height: 1px!important;
+    }
+    
+    //ion-item
+    .item-md {
+        margin-bottom: 25px!important;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        box-shadow: 1px 9px 10px #dbdbdb;
+        width: 97%;
+        margin: auto;
+    }
+    .item-md.item-block .item-inner {
+        padding-right: 0px!important;
+    }
+
+    //ion-label
+    .label-md{
+        margin: 0!important;
+    }
+    .desc{
+        margin-top: 20px;
+        font-size: 13px;
+        width: 100%;
+    }
+
+    //price button
+    .price{
+        font-size: 13px !important;
+        margin-top: 5px!important;
+        background: #00AD9F;
+        color:white!important;
+    }
+    .priceButton{
+        border-radius: 5px;
+        width:36%;
+    }
+
+    .quantity{
+        font-size: 13px;
+        color:#757575;
+    }
+
+    //texts/button inside ion-item
+    .doubButtons{
+        margin-top:24px;
+        margin-left: -2px;
+    }
+    .nameText{
+        margin-top:19px!important;
+    }
+
+    //text inside Sub Item
+    .subPriceText{
+        font-size: 13px!important;
+        color: #757575!important;
+    }
+    .subNameText{
+        font-size: 17px!important;
+    }
+
+    //the increment and decrement button
+    .add{
+        background-color: #00AD9F;
+        width: 30%;
+        font-size: 18px;
+        border-radius: 5px;
+    }
+    .remove{
+        background-color:#f53d3d;
+        width: 30%;
+        font-size: 18px;
+        border-radius: 5px;
+    }
+
+    //quantity
+    .quantity-text{
+        font-size:13px;
+        color:#757575;
+    }
+    .quant{
+        margin-bottom: 8px;
+        float:left;
+    }
+
+    //total price
+    .totalP{
+        color:#009688!important;
+    }
+
+    //fab icon
+    .fab-md{
+        color: #f53d3d!important;
+        background-color: white!important;
+    }
+    .fab{
+        width: 22px!important;
+        height: 22px!important;
+    }
+    .fabIcon{
+        font-size: 15px;
+    }
+
+    //reaction button
+    .likes{
+        color:#757575;
+        font-size: 12px;
+        margin-left: 3px;
+    }
+
+    //budget button
+    .budget{
+        color:#009688;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .underline{
+        text-decoration: underline;
+    }
     .incName{
         border-bottom: 1px solid #f13b90;
         font-size: 21px;
         font-weight: 500;
         margin-left: 8px;
+    }
+
+    //cart button and badge
+    button {
+        ion-badge {
+            position: absolute;
+            top: -0.5rem;
+            right: -0.4rem;
+            opacity: 0.9;
+            border-radius: 150px!important;
+        }
+        p{
+            color:white!important;
+        }
+        .input-button{
+            border:none;
+        }
+    }
+
+    //searchbar
+    .searchbar-md .searchbar-input {
+        border-radius: 30px!important;
+    }
+
+    //swiper bullet
+    .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: #00AD9F;
     }
     .swiper-pagination-bullets{
         bottom: 0px!important;
@@ -29,34 +256,100 @@ page-budgetting {
         width: 6px!important;
         height: 6px!important;
     }
-    .searchbar-md .searchbar-input {
-        border-radius: 30px!important;
+
+    .quanti{
+        margin-bottom: -18px;
     }
-    .swiper-pagination-bullet-active {
-        opacity: 1;
-        background: #05c3b2;
+    
+    //add-to-cart button
+    .add-button{
+        width:58%;
+        margin-left: -3px;
+        border-radius: 5px;
     }
-    h2{
-        font-weight:500;
-        color:#222222!important;
-        font-size:17px!important;
+
+    //Budget Card
+    .budgetCont{
+        background: #00ad9f!important;
+        padding: 8px;
     }
-    .updateButton{
+    .budgetLabel{
+        color:white!important;
+    }
+
+
+    //auto-suggest button
+    .submitButton{
         float:right;
         border-radius:20px;
+        border:1px solid #00AD9F;
         padding:8px!important;
+        margin-bottom: 18px;
         font-size: 12px;
-        color: white;
+        color:#00AD9F;
         font-family: sans-serif;
     }
-    .updateText{
-        color: white;
+    .submitText{
+        color:#00AD9F;
         padding-left: 9px;
         font-size: 11px;
         font-family: sans-serif;
     }
+    .cart{
+        position: absolute;
+        right: 9px;
+        top: 7px;
+    }
+    .cartCont{
+        margin-top: 5px;
+    }
+    .cont2{
+        margin-top:20px;
+    }
+    h2{
+        margin-left: 8px;
+        font-weight:500;
+        color:#222222!important;
+        font-size:22px!important;
+    }
+    .cartText{
+        color:white;
+        font-size: 11px;
+        font-family: sans-serif;
+    }
+
+    //input
+    ion-input{
+        color: white;
+        border-bottom: 1px solid white;
+        width: 80%!important;
+        
+        .text-input::-moz-placeholder {
+            color: white;
+          }
+          
+          .text-input:-ms-input-placeholder {
+            color: white;
+          }
+          
+          .text-input::-webkit-input-placeholder {
+            text-indent: 0;
+            color: white;
+          }
+    }
     img{
         margin:auto;
+    }
+    .item-md ion-thumbnail img {
+        width: 120px!important;
+        height: 120px!important;
+    }
+    .dislike{
+        margin-right: 34px;
+    }
+
+    .list-md .item-block .item-inner {
+        border-bottom: none!important;
     }
 }
 

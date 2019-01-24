@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 
 import { EditPage } from '../edit/edit';
 import { Item } from '../../app/models/item';
@@ -24,6 +24,7 @@ export class BudgettingPage {
   selectedItem: any;
   color:string="#009688";
   username: any;
+  quantity: any = [];
 
   items: Item[];
   isSearchbarOpened = false;
@@ -33,7 +34,8 @@ export class BudgettingPage {
               public toastCtrl: ToastController,
               public authAf: AngularFireAuth,
               public menuCtrl: MenuController,
-              public itemService: Service
+              public itemService: Service,
+              public alertCtrl: AlertController
               ) {   
     // this.checked=navParams.get('data');
     this.birthItems=navParams.get('birthItems');
@@ -41,8 +43,13 @@ export class BudgettingPage {
     this.wedItems=navParams.get('wedItems');
 
     this.username = this.authAf.auth.currentUser.email;
+    console.log(this.authAf.auth.currentUser.uid)
 
     this.menuCtrl.enable(true, 'myMenu');
+  }
+
+  ionViewDidLoad(){
+    // this.itemService.change(id);
   }
 
   logout(){
@@ -61,10 +68,10 @@ export class BudgettingPage {
   imgDetail(item){
     this.navCtrl.push(ItemDetailsPage,{
       data: item.name,
+      subData: item.subName,
       itemDetail: item.itemDetails
     });
   }
-  
 
   edit(){
     this.navCtrl.push(EditPage, {
@@ -79,6 +86,78 @@ export class BudgettingPage {
       duration: 3000
     });
     toast.present();
+  }
+
+  quant(item){
+    
+    if(item.noQty){
+      let alert = this.alertCtrl.create({
+        title: 'Oops!',
+        subTitle: 'No quantity needed for this item/person.',
+        buttons: ['Ok']
+      });
+      alert.present();
+      return false;
+    }
+
+    var index = this.quantity.indexOf(item,0)   //checks what item that user wanted to input.
+    let alert = this.alertCtrl.create({         //ALERTS
+      
+      title: 'Input Quantity',
+      inputs: [
+        {
+          name: 'quantityInput',
+          type: 'number',
+          placeholder: item.qty,
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            const toast = this.toastCtrl.create({     //opens toast
+              message: 'Cancelled!',
+              duration: 3000
+            });
+            toast.present();
+          }
+        },
+        {
+          text: 'Save',
+          handler: (inputData) => {
+            item.qty = parseInt(inputData.quantityInput);
+            item.qty2 = parseFloat(inputData.quantityInput);
+            
+            //alerts if the user input is lesser than quantity of 1.
+            if(item.qty < 1){
+              let alert = this.alertCtrl.create({
+                title: 'Ooops!',
+                subTitle: 'Quantity is zero, please input again that is greather than 0.',
+                buttons: ['Ok']
+              });
+              alert.present();
+              return false;
+            }
+            //alerts if the user input is using floating-point numbers
+            else if(item.qty != item.qty2){
+              let alert = this.alertCtrl.create({
+                title: 'Ooops!',
+                subTitle: "Input invalid, quantity uses fixed numbers.",
+                buttons: ['Ok']
+              });
+              alert.present();
+              return false;
+            }
+            else{
+              this.quantity.splice(index,1);    //splices the current quantity.
+              this.quantity.push(item.qty);     //adds the new quantity input.
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 }

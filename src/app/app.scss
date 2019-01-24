@@ -22,3 +22,40 @@
 ion-navbar.toolbar {
     min-height: 46px;
 }
+
+//ALERT CONTROLLER
+.alert-md .alert-head {
+    text-align: start!important;
+    padding: 24px 24px 20px!important;
+    background: #00AD9F!important;
+}
+.alert-md .alert-input {
+    border-bottom: 2px solid #00AD9F!important;
+}
+.alert-md .alert-button {
+    color: #ffffff!important;
+    background: #00AD9F!important;
+    border-radius: 18px!important;
+    font-size: 11px!important;
+    padding: 6px 17px!important;
+}
+.alert-md .alert-wrapper {
+    border-radius: 16px!important;
+}
+.alert-wrapper {
+    min-width: 290px!important;
+}
+.alert-md .alert-title {
+    color: white;
+}
+.alert-md .alert-title {
+    font-size: 19px!important;
+    text-align: center;
+}
+.alert-md .alert-button-group {
+    padding: 8px 9px 21px 24px!important;
+}
+
+.alert-md .alert-message{
+    padding: 15px 24px 16px;
+}

@@ -1,21 +1,18 @@
 <ion-content>
   <img src="../../assets/imgs/bSmart-LOGO.png" alt="LOGO">
 
-    <div class="input" no-lines>
+  <div class="input" no-lines>
       <ion-input type="text" placeholder="Email" [(ngModel)]="user.email"></ion-input>
 
       <ion-input class="password" type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
     </div>
 
     <div text-center>
-      <button class="logButton" color="secondary" ion-button (click)="login(user)">LOGIN</button>
+      <button class="regButton" color="secondary" ion-button (click)="register(user)">SUBMIT</button>
     </div>
 
+    
     <div text-center>
-      <button class="regButton" color="custom-yellow" ion-button (click)="register()">REGISTER</button>
-    </div>
-
-    <div text-center>
-      <h2 class="forgtPass" (click)="forgotPass()">Forgot Password?</h2>
+      <h2 text-center class="goBack" (click)="login()">Go back to login</h2>
     </div>
 </ion-content>

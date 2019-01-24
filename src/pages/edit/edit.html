@@ -16,24 +16,20 @@
 
 <ion-content padding fullscreen #myContent>
 
-    <ion-item *ngFor = "let check of checked | filter: term; let i = index" no-padding>
-        
-      <ion-item no-lines class="incName">
+    <div *ngFor = "let check of checked | filter: term; let i = index" no-padding>
         <div class="text">
-          <p class="label">Item Name:</p> <input class="inputTextTitle" ion-input type="text" [(ngModel)]="check.name" name="name">
+          <p class="label">Item Name: 
+            <button class="catName" color="custom-yellow" (click)="updateItem(check)" ion-button >
+              <p class="catSave">Save</p>
+            </button>
+          </p>
+           <input class="inputTextTitle" ion-input type="text" [(ngModel)]="check.name" name="name">
         </div>
-      </ion-item>
+        
 
-      <ion-item class="item" no-lines *ngFor="let item of check.itemList.itemName; let i = index;">
-          <ion-fab top right>
-              <button ion-fab>
-                  <ion-icon class="fabIcon" [name]="item.likes? 'heart' : 'heart-outline'"></ion-icon>
-              </button>
-              <a class="likes">{{item.likes}}</a>
-          </ion-fab>
-
+      <ion-item no-lines class="item" *ngFor="let item of check.itemList.itemName; let i = index;">
           <div text-center>
-            <img src="{{item.itemDetails.imageUrl}}" imageViewer>
+            <img class="parentImage" src="{{item.itemDetails.imageUrl}}" imageViewer>
           </div> 
           <div class="text">
             <p class="label">Product Name:</p> <input class="inputText" ion-input type="text" [(ngModel)]="item.name" name="name">
@@ -42,15 +38,32 @@
             <p class="label">Provider:</p> <input class="inputText" ion-input type="text" [(ngModel)]="item.itemDetails.moreDetails.provider" name="provider">
             <p class="label">Contact:</p> <input class="inputText" ion-input type="text" [(ngModel)]="item.itemDetails.moreDetails.contact" name="contact">
             <p class="label">Description:</p> <input class="inputText" ion-input type="text" [(ngModel)]="item.itemDetails.moreDetails.description" name="description">
+            <p class="label">Image Url:</p> <input class="inputText" ion-input type="text" [(ngModel)]="item.itemDetails.imageUrl" name="description">
           </div>
+
+          <ion-slides pager paginationType="progress" class="subSlider" slidesPerView="2">
+              <ion-slide class="subSlide" *ngFor="let subItem of item.itemDetails.moreDetails.subItems; let i = index;">
+                <ion-card class="subCard">
+                  <ion-card-content>
+                      <img class="subImage" src="{{subItem.subImage}}" imageViewer>
+                      <div class="text">
+                        <p class="subLabel">Name:</p> <input class="inputText" ion-input type="text" [(ngModel)]="subItem.subName" name="subName">
+                        <p class="subLabel">Price:</p> <input class="inputText" ion-input type="text"  [(ngModel)]="subItem.subPrice" name="subDesc">
+                        <p class="subLabel">Description:</p> <input class="inputText" ion-input type="text"  [(ngModel)]="subItem.subDesc" name="subDesc">
+                        <p class="subLabel">Image Url:</p> <input class="inputText" ion-input type="text"  [(ngModel)]="subItem.subImage" name="subDesc">
+                      </div>
+                  </ion-card-content>
+                </ion-card>
+              </ion-slide>
+            </ion-slides>
+          
+            <div text-center>
+              <button icon-only color="custom-yellow" class="updateButton" (click)="updateItem(check)" ion-button >
+                <ion-icon class="checkIcon" name="checkmark"></ion-icon>
+                <p class="updateText">Save</p>
+              </button>
+            </div>
       </ion-item>
-      
-      <div text-center>
-        <button icon-only color="custom-yellow" class="updateButton" (click)="updateItem(check)" ion-button >
-          <ion-icon class="checkIcon" name="checkmark"></ion-icon>
-          <p class="updateText">Save</p>
-        </button>
-      </div>
-    </ion-item>
+    </div>
 
 </ion-content>

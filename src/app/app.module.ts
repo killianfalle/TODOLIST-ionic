@@ -10,7 +10,7 @@ import { Service } from '../app/services/service';
 import { BudgettingPage } from '../pages/budgetting/budgetting';
 import { EditPage } from '../pages/edit/edit';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { ProductsPage } from '../pages/products/products';
+import { RegisterPage } from '../pages/register/register';
 
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
@@ -30,7 +30,7 @@ import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
     BudgettingPage,
     EditPage,
     ItemDetailsPage,
-    ProductsPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +51,7 @@ import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
     BudgettingPage,
     EditPage,
     ItemDetailsPage,
-    ProductsPage
+    RegisterPage
   ],
   providers: [
     StatusBar,

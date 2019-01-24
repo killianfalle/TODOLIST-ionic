@@ -19,38 +19,64 @@
 </ion-header>
   
   <ion-content padding fullscreen #myContent>
+
       <ion-list>
+          <ion-buttons text-right>
             <button icon-only color="secondary" class="updateButton" (click)="edit()" ion-button >
               <p class="updateText">Update</p>
               <ion-icon name="create"></ion-icon>
             </button>
+            
+            
+          </ion-buttons>
+          
 
-        <ion-item *ngFor = "let check of birthItems | filter:term; let i = index" no-padding>
-          <ion-item no-lines class="incName">
-            {{check.name}}
+          <div *ngFor="let check of birthItems | filter:term; let i = index">
               <button text-left icon-only color="secondary" class="updateButton" (click)="addItem(check)" ion-button >
                 <p class="updateText">Add</p>
                 <ion-icon name="add"></ion-icon>
               </button>
-          </ion-item>
-          
-          <ion-card>
-            <ion-card-content>
-              <ion-slides pager paginationType="bullets" slidesPerView="1">
-                  
-                  <ion-slide *ngFor="let item of check.itemList.itemName; let i = index;">
-                    <h2>{{item.name}}</h2>
-                    <h2 class="price">{{item.price | currency:'₱'}}</h2>
-                    <img src="{{item.itemDetails.imageUrl}}" (click)="imgDetail(item)">
 
-                  </ion-slide>
-              
-                </ion-slides>
-            </ion-card-content>
-          </ion-card>
-        
-        </ion-item>
+              <button text-left icon-only color="secondary" class="updateButton" (click)="change()" ion-button >
+                <p class="updateText">ACC</p>
+                <ion-icon name="add"></ion-icon>
+              </button>
+            <h2>{{check.name}}</h2>
+          
+                  <ion-item *ngFor="let item of check.itemList.itemName; let i = index;">
+                    <img class="parentImage" src="{{item.itemDetails.imageUrl}}" (click)="imgDetail(item)">
+                    <h2 text-center text-wrap>{{item.name}}</h2>
+                    <p text-center class="desc" text-wrap>{{item.itemDetails.moreDetails.description}}</p>
+                    <div text-center class="quanti">
+                        <a class="quantity-text">Quantity:</a>
+                        <a class="quantity">{{item.qty}}</a>
+                        
+                        <a class="quantity">{{item.NA}}</a>     
+                    </div>
+
+                    <ion-buttons text-center class="doubButtons">
+                      <button class="priceButton" ion-button color="secondary" (click)="quant(item)">
+                          <h2 class="price">{{item.qty * item.price | currency:'₱'}}</h2>
+
+                          <h2 class="price">{{item.noQty * item.price | currency:'₱'}}</h2>
+                      </button>
+                    </ion-buttons>
+
+                    <ion-slides pager paginationType="progress" class="subSlider" slidesPerView="2">
+                      <ion-slide class="subSlide" *ngFor="let subItem of item.itemDetails.moreDetails.subItems; let i = index;">
+                        <ion-card class="subCard">
+                          <ion-card-content>
+                              <img class="subImage" src="{{subItem.subImage}}" imageViewer>
+                              <h2 text-center class="subNameText" text-wrap>{{subItem.subName}}</h2>
+                              <h2 text-center class="subPriceText" text-wrap>{{subItem.subPrice | currency:'₱'}}</h2>
+                          </ion-card-content>
+                        </ion-card>
+                      </ion-slide>
+                    </ion-slides>
+                  </ion-item>
+          </div>
       </ion-list>
+      
   </ion-content>
 
   

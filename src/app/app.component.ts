@@ -7,7 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { HomePage } from '../pages/home/home';
 import { User } from './models/user';
 import { Service } from './services/service';
-import { ProductsPage } from '../pages/products/products';
+import { BudgettingPage } from '../pages/budgetting/budgetting';
 
 @Component({
   templateUrl: 'app.html'
@@ -47,7 +47,7 @@ export class MyApp {
 
     // Populate pages for the application
     this.pages = [
-      { title: 'My Products', component: ProductsPage, icon: 'basket' },
+      { title: 'My Products', component: BudgettingPage, icon: 'basket' },
     ];
     this.activePage = this.pages;
   }
@@ -74,7 +74,7 @@ export class MyApp {
    }
 
    openPage(page){
-    this.nav.push(page.component,{
+    this.nav.setRoot(page.component,{
       birthItems: this.birthItems,
       // christItems: this.christItems,
       // wedItems: this.wedItems
