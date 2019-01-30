@@ -5,12 +5,16 @@
     imageName?:string;
     price?: string;
     itemName?: object;
+    subName?: string;
+    subQty?: number;
+    subPrice?: number;
     moreDetails?: object;
     itemList?: object;
-    subItems?: object;
+    subItems?: string;
     subDesc?: string;
     userId?: string;
     users?: object;
+    collectionName?: string;
   }
 
   // export interface Events{

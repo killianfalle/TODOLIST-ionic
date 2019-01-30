@@ -18,6 +18,7 @@ export class HomePage {
   birthItems: any;
   christItems: any;
   wedItems: any;
+  advertisers: any;
 
   user = {} as User;
   items: Item[];
@@ -41,6 +42,11 @@ export class HomePage {
                   console.log(this.birthItems);
                 });
 
+                this.service.getAdvertisers().subscribe(advertisers => {
+                  this.advertisers = advertisers;
+                  console.log(this.advertisers);
+                });
+
                 // this.service.getChristItems().subscribe(christItems => {
                 //   this.christItems = christItems;
                 //   console.log(this.christItems);
@@ -53,47 +59,16 @@ export class HomePage {
               }
 
   async login(user: User){
-    console.log(this.authAf.auth.currentUser.uid);
-
     try{
       this.authAf.auth.signInWithEmailAndPassword(user.email, user.password)
         .then(data=>{
-
-          let alert = this.alertCtrl.create({
-      
-            title: 'Input Token',
-            inputs: [
-              {
-                name: 'token',
-              },
-            ],
-            buttons: [
-              {
-                text: 'Cancel',
-                role: 'cancel',
-                handler: () => {
-                  const toast = this.toastCtrl.create({
-                    message: 'Cancelled!',
-                    duration: 3000
-                  });
-                  toast.present();
-                }
-              },
-              {
-                text: 'Submit',
-                handler: (inputData) => {
                   this.navCtrl.setRoot(BudgettingPage,{
-                    birthItems: this.birthItems
+                    birthItems: this.birthItems,
+                    advertisers: this.advertisers
                   });
         
                   this.toast('Welcome! ');
                   this.alert('Select an inclusion(s) that you want to update.');
-                }
-              }
-            ]
-          });
-          alert.present();
-
         })
         .catch(error =>{
           let alert = this.alertCtrl.create({
@@ -109,6 +84,27 @@ export class HomePage {
         buttons: ['Ok']
       });
       alert.present();
+    }
+  }
+
+  googleLog(){
+    try{
+      this.service.googleLogin()
+      .then(data=>{
+        this.navCtrl.setRoot(BudgettingPage,{
+          birthItems: this.birthItems
+        });
+        this.alert('Select an item/product that you want to update.');
+        })
+        .catch(error =>{
+        let alert = this.alertCtrl.create({
+          title: error.message,
+          buttons: ['Ok']
+        });
+        alert.present();
+        })
+    }catch(e){
+      console.log(e);
     }
   }
 

@@ -9,6 +9,9 @@ import { MenuController } from 'ionic-angular';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Service } from '../../app/services/service';
+import { switchMap } from 'rxjs/operators';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @IonicPage()
 @Component({
@@ -24,10 +27,15 @@ export class BudgettingPage {
   selectedItem: any;
   color:string="#009688";
   username: any;
+  advertisers: any;
   quantity: any = [];
 
   items: Item[];
   isSearchbarOpened = false;
+  idTok: any;
+  token: BehaviorSubject<string>;
+
+  myProducts: any=[];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -35,21 +43,114 @@ export class BudgettingPage {
               public authAf: AngularFireAuth,
               public menuCtrl: MenuController,
               public itemService: Service,
-              public alertCtrl: AlertController
+              public alertCtrl: AlertController,
+              public afs: AngularFirestore,
               ) {   
     // this.checked=navParams.get('data');
-    this.birthItems=navParams.get('birthItems');
-    this.christItems=navParams.get('christItems');
-    this.wedItems=navParams.get('wedItems');
+    // this.birthItems=navParams.get('birthItems');
+    this.advertisers=navParams.get('advertisers');
+    // this.christItems=navParams.get('christItems');
+    // this.wedItems=navParams.get('wedItems');
 
+    // this.itemService.getProducts().subscribe(birthItems => {
+    //   this.birthItems = birthItems;
+    //   console.log(this.birthItems);
+    // });
     this.username = this.authAf.auth.currentUser.email;
-    console.log(this.authAf.auth.currentUser.uid)
-
     this.menuCtrl.enable(true, 'myMenu');
   }
 
   ionViewDidLoad(){
-    // this.itemService.change(id);
+    this.products();
+  }
+
+  products(){
+    this.token = new BehaviorSubject<string>(this.authAf.auth.currentUser.uid);
+    this.idTok = this.authAf.auth.currentUser.uid;
+
+    let hala = this.token.pipe(
+      switchMap(token => 
+        this.afs
+          .collection<Item>('birthItems', ref=> ref.where('userIDs', 'array-contains', token))
+          .valueChanges()
+        )
+    );
+
+    let hala2 = this.token.pipe(
+      switchMap(token => 
+        this.afs
+          .collection<Item>('christItems', ref=> ref.where('userIDs', 'array-contains', token))
+          .valueChanges()
+        )
+    );
+
+    let hala3 = this.token.pipe(
+      switchMap(token => 
+        this.afs
+          .collection<Item>('wedItems', ref=> ref.where('userIDs', 'array-contains', token))
+          .valueChanges()
+        )
+    );
+
+    hala.subscribe(birthItems=>{
+      this.birthItems = birthItems
+      console.log(this.birthItems);
+
+      //TO DELETE THOSE ITEMS THAT ARE NOT INCLUDED BY THE ADVERTISER'S BUSINESS
+      for(var i=0; i<this.birthItems.length; i++){
+        var element = this.birthItems[i].itemList.itemName;
+        for(var e=0; e<element.length; e++){
+          var el = element[e].userId;
+          if(el == this.idTok){
+            this.myProducts = element[e];
+            console.log(this.myProducts);
+            // element.splice(e, 1)
+          }else{
+            console.log('Nothing.')
+          }
+        }
+      }
+    })
+
+    hala2.subscribe(christItems=>{
+      this.christItems = christItems
+      console.log(this.christItems);
+
+      //TO DELETE THOSE ITEMS THAT ARE NOT INCLUDED BY THE ADVERTISER'S BUSINESS
+      for(var i=0; i<this.christItems.length; i++){
+        var element = this.christItems[i].itemList.itemName;
+        for(var e=0; e<element.length; e++){
+          var el = element[e].userId;
+          if(el == this.idTok){
+            this.myProducts = element[e];
+            console.log(this.myProducts);
+            // element.splice(e, 1)
+          }else{
+            console.log('Nothing.')
+          }
+        }
+      }
+    })
+
+    hala3.subscribe(wedItems=>{
+      this.wedItems = wedItems
+      console.log(this.wedItems);
+
+      //TO DELETE THOSE ITEMS THAT ARE NOT INCLUDED BY THE ADVERTISER'S BUSINESS
+      for(var i=0; i<this.wedItems.length; i++){
+        var element = this.wedItems[i].itemList.itemName;
+        for(var e=0; e<element.length; e++){
+          var el = element[e].userId;
+          if(el == this.idTok){
+            this.myProducts = element[e];
+            console.log(this.myProducts);
+            // element.splice(e, 1)
+          }else{
+            console.log('Nothing.')
+          }
+        }
+      }
+    })
   }
 
   logout(){
@@ -76,6 +177,9 @@ export class BudgettingPage {
   edit(){
     this.navCtrl.push(EditPage, {
       item: this.birthItems,
+      item2: this.christItems,
+      item3: this.wedItems,
+      products: this.myProducts
     })
   }
 

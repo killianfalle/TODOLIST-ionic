@@ -24,7 +24,6 @@
               </ion-slides>
               <div class="text">
                 <p>Location:</p> <h2>{{imageDetails.moreDetails.location}}</h2>
-                <p>Provider:</p> <h2>{{imageDetails.moreDetails.provider}}</h2>
                 <p>Contact:</p> <h2>{{imageDetails.moreDetails.contact}}</h2>
                 <p>Description:</p> <h2>{{imageDetails.moreDetails.description}}</h2>
               </div>
@@ -35,8 +34,22 @@
                     <ion-card-content>
                         <img class="subImage" src="{{subItem.subImage}}" imageViewer>
                         <p class="subLabel">Name:</p> <h2 text-center class="subText">{{subItem.subName}}</h2>
-                        <p class="subLabel">Price:</p> <h2 text-center class="subText">{{subItem.subPrice | currency:'₱'}}</h2>
+                        <p *ngIf="subItem.subPrice" class="subLabel">Price:</p> <h2 text-center class="subText">{{subItem.subPrice | currency:'₱'}}</h2>
                         <p class="subLabel">Description:</p> <h2 text-center class="subText">{{subItem.subDesc}}</h2>
+
+                        <p class="setTitle" *ngIf="subItem.packages">PACKAGES</p>
+                        <div class="setA" *ngIf="subItem.packages">
+                          <p class="subLabel">Set A:</p> <h2 text-center class="subTextSet">{{subItem.packages.setA.description}}</h2>
+                          <p class="subLabelPrice">Price: </p> <h2 text-center class="subText">{{subItem.packages.setA.price}}</h2>
+                        </div>
+                        <div class="setB" *ngIf="subItem.packages">
+                          <p class="subLabel">Set B:</p> <h2 text-center class="subTextSet">{{subItem.packages.setB.description}}</h2>
+                          <p class="subLabelPrice">Price: </p> <h2 text-center class="subText">{{subItem.packages.setB.price}}</h2>
+                        </div>
+                        <div class="setC" *ngIf="subItem.packages">
+                          <p class="subLabel">Set C:</p> <h2 text-center class="subTextSet">{{subItem.packages.setC.description}}</h2>
+                          <p class="subLabelPrice">Price: </p> <h2 text-center class="subText">{{subItem.packages.setC.price}}</h2>
+                        </div>
                     </ion-card-content>
                   </ion-card>
                 </ion-slide>

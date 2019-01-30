@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { User } from '../../app/models/user';
 
@@ -18,7 +18,8 @@ export class RegisterPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private afAuth: AngularFireAuth,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              public toastCtrl: ToastController) {
   }
 
   login(){
@@ -27,13 +28,14 @@ export class RegisterPage {
 
   async register(user: User){
     try{
-      await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
-      let alert = this.alertCtrl.create({
-        title: 'Successfully Registered!',
-        subTitle: 'You can now go back to Login and Sign-In',
-        buttons: ['Ok']
-      });
-      alert.present();
+      let result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+      if(result){
+        let toast = this.toastCtrl.create({
+          message: 'You can now setup your profile.',
+          duration: 1500
+        });
+        toast.present();
+      }
     }
     catch(e){
       let alert = this.alertCtrl.create({

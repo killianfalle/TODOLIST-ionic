@@ -36,8 +36,8 @@ page-budgetting {
         display: initial!important;
     }
     .parentImage{
-        max-width: 60%!important;
-        max-height: 60%!important;
+        max-width: 80%!important;
+        margin-bottom: 10px;
         object-fit: fill;
         overflow: hidden;
         display: block;
@@ -104,6 +104,7 @@ page-budgetting {
         padding-top: 20px;
         box-shadow: 1px 9px 10px #dbdbdb;
         width: 97%;
+        padding-left: 0px!important;
         margin: auto;
     }
     .item-md.item-block .item-inner {

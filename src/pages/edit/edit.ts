@@ -9,7 +9,10 @@ import { Service } from '../../app/services/service';
 })
 export class EditPage {
 
-  checked: any;
+  birthItems: any;
+  wedItems: any;
+  christItems: any;
+  myProducts: any;
   isSearchbarOpened = false;
   isItemSearchbarOpened = false;
   
@@ -17,11 +20,17 @@ export class EditPage {
               public navParams: NavParams,
               public toastCtrl: ToastController,
               public itemService: Service) {
-              this.checked=navParams.get('item');
+              this.birthItems=navParams.get('item');
+              this.christItems=navParams.get('item2');
+              this.wedItems=navParams.get('item3');
+              this.myProducts=navParams.get('products');
               }
 
   ionViewDidLoad() {
-    console.log(this.checked);
+    console.log(this.birthItems);
+    console.log(this.christItems);
+    console.log(this.wedItems);
+    console.log(this.myProducts);
   }
 
   updateItem(item){

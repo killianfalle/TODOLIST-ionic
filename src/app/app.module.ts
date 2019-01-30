@@ -23,6 +23,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
+import { ProfilePage } from '../pages/profile/profile';
+import { UpdateProfilePage } from '../pages/update-profile/update-profile';
 @NgModule({
   declarations: [
     MyApp,
@@ -30,7 +32,9 @@ import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
     BudgettingPage,
     EditPage,
     ItemDetailsPage,
-    RegisterPage
+    RegisterPage,
+    ProfilePage,
+    UpdateProfilePage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,9 @@ import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
     BudgettingPage,
     EditPage,
     ItemDetailsPage,
-    RegisterPage
+    RegisterPage,
+    ProfilePage,
+    UpdateProfilePage
   ],
   providers: [
     StatusBar,

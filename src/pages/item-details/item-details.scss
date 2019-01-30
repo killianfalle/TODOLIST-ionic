@@ -26,6 +26,33 @@ page-item-details {
         color: #494949;
         font-size:20px!important;
     }
+    .setTitle{
+        border-bottom: 1px solid rgb(207, 207, 207)!important;
+        margin-top: 40px!important;
+        margin-bottom: -10px;
+        color: #05c3b2;
+        font-family: sans-serif;
+        font-size: 17px!important;
+    }
+    .subLabelPrice{
+        color: #05c3b2;
+        font-family: sans-serif;
+    }
+    .subTextSet{
+        margin-bottom: -15px!important;
+        margin-left: 0px !important;
+    }
+    .setA{
+        border-bottom: 1px solid rgb(207, 207, 207)!important;
+    }
+    .setB{
+        border-top: 1px solid rgb(207, 207, 207)!important;
+        border-bottom: 1px solid rgb(207, 207, 207)!important;
+    }
+    .setC{
+        border-top: 1px solid rgb(207, 207, 207)!important;
+        border-bottom: 1px solid rgb(207, 207, 207)!important;
+    }
     .title{
         margin-left: 30%;
     }

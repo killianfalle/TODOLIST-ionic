@@ -31,11 +31,15 @@
           </ion-buttons>
           
 
-          <div *ngFor="let check of birthItems | filter:term; let i = index">
+          <!-- <div *ngFor="let check of birthItems | filter:term; let i = index">
               <button text-left icon-only color="secondary" class="updateButton" (click)="addItem(check)" ion-button >
                 <p class="updateText">Add</p>
                 <ion-icon name="add"></ion-icon>
               </button>
+              <div>
+                {{myProducts.NA}}
+              </div>
+
 
               <button text-left icon-only color="secondary" class="updateButton" (click)="change()" ion-button >
                 <p class="updateText">ACC</p>
@@ -74,6 +78,156 @@
                       </ion-slide>
                     </ion-slides>
                   </ion-item>
+          </div> -->
+
+          <!-----------------BIRTHITEMS------------------------->
+          <div *ngIf="birthItems"> 
+            <div *ngFor="let check of birthItems | filter:term; let i = index">
+                <!-- <button text-left icon-only color="secondary" class="updateButton" (click)="addItem(myProducts)" ion-button >
+                <button text-left icon-only color="secondary" class="updateButton" (click)="addItem(check)" ion-button >
+                  <p class="updateText">Add</p>
+                  <ion-icon name="add"></ion-icon>
+                </button>
+
+                <button text-left icon-only color="secondary" class="updateButton" (click)="change()" ion-button >
+                  <p class="updateText">ACC</p>
+                  <ion-icon name="add"></ion-icon>
+                </button> -->
+                <h2>{{check.name}}</h2>
+            
+                    <ion-item>
+                      <img class="parentImage" src="{{myProducts.itemDetails.imageUrl}}" (click)="imgDetail(myProducts)">
+                      <h2 text-center text-wrap>{{myProducts.name}}</h2>
+                      <p text-center class="desc" text-wrap>{{myProducts.itemDetails.moreDetails.description}}</p>
+                      <div text-center class="quanti">
+                          <a class="quantity-text">Quantity:</a>
+                          <a class="quantity">{{myProducts.qty}}</a>
+                          
+                          <a class="quantity">{{myProducts.NA}}</a>     
+                      </div>
+
+                      <ion-buttons text-center class="doubButtons">
+                        <button class="priceButton" ion-button color="secondary" (click)="quant(item)">
+                            <h2 class="price">{{myProducts.qty * myProducts.price | currency:'₱'}}</h2>
+
+                            <h2 class="price">{{myProducts.noQty * myProducts.price | currency:'₱'}}</h2>
+                        </button>
+                      </ion-buttons>
+
+                      <ion-slides pager paginationType="progress" class="subSlider" slidesPerView="2">
+                        <ion-slide class="subSlide" *ngFor="let subItem of myProducts.itemDetails.moreDetails.subItems; let i = index;">
+                          <ion-card class="subCard">
+                            <ion-card-content>
+                                <img class="subImage" src="{{subItem.subImage}}" imageViewer>
+                                <h2 text-center class="subNameText" text-wrap>{{subItem.subName}}</h2>
+                                <h2 text-center class="subPriceText" text-wrap>{{subItem.subPrice | currency:'₱'}}</h2>
+                            </ion-card-content>
+                          </ion-card>
+                        </ion-slide>
+                      </ion-slides>
+                    </ion-item>
+            </div>
+          </div>
+
+
+          <!-----------------CHRISTITEMS------------------------->
+          <div *ngIf="christItems"> 
+            <div *ngFor="let check of christItems | filter:term; let i = index">
+                <!-- <button text-left icon-only color="secondary" class="updateButton" (click)="addItem(myProducts)" ion-button >
+                <button text-left icon-only color="secondary" class="updateButton" (click)="addItem(check)" ion-button >
+                  <p class="updateText">Add</p>
+                  <ion-icon name="add"></ion-icon>
+                </button>
+
+                <button text-left icon-only color="secondary" class="updateButton" (click)="change()" ion-button >
+                  <p class="updateText">ACC</p>
+                  <ion-icon name="add"></ion-icon>
+                </button> -->
+                <h2>{{check.name}}</h2>
+            
+                    <ion-item>
+                      <img class="parentImage" src="{{myProducts.itemDetails.imageUrl}}" (click)="imgDetail(myProducts)">
+                      <h2 text-center text-wrap>{{myProducts.name}}</h2>
+                      <p text-center class="desc" text-wrap>{{myProducts.itemDetails.moreDetails.description}}</p>
+                      <div text-center class="quanti">
+                          <a class="quantity-text">Quantity:</a>
+                          <a class="quantity">{{myProducts.qty}}</a>
+                          
+                          <a class="quantity">{{myProducts.NA}}</a>     
+                      </div>
+
+                      <ion-buttons text-center class="doubButtons">
+                        <button class="priceButton" ion-button color="secondary" (click)="quant(item)">
+                            <h2 class="price">{{myProducts.qty * myProducts.price | currency:'₱'}}</h2>
+
+                            <h2 class="price">{{myProducts.noQty * myProducts.price | currency:'₱'}}</h2>
+                        </button>
+                      </ion-buttons>
+
+                      <ion-slides pager paginationType="progress" class="subSlider" slidesPerView="2">
+                        <ion-slide class="subSlide" *ngFor="let subItem of myProducts.itemDetails.moreDetails.subItems; let i = index;">
+                          <ion-card class="subCard">
+                            <ion-card-content>
+                                <img class="subImage" src="{{subItem.subImage}}" imageViewer>
+                                <h2 text-center class="subNameText" text-wrap>{{subItem.subName}}</h2>
+                                <h2 text-center class="subPriceText" text-wrap>{{subItem.subPrice | currency:'₱'}}</h2>
+                            </ion-card-content>
+                          </ion-card>
+                        </ion-slide>
+                      </ion-slides>
+                    </ion-item>
+            </div>
+          </div>
+
+
+
+          <!------------------WEDITEMS------------------------->
+          <div *ngIf="wedItems"> 
+            <div *ngFor="let check of wedItems | filter:term; let i = index">
+                <!-- <button text-left icon-only color="secondary" class="updateButton" (click)="addItem(myProducts)" ion-button >
+                <button text-left icon-only color="secondary" class="updateButton" (click)="addItem(check)" ion-button >
+                  <p class="updateText">Add</p>
+                  <ion-icon name="add"></ion-icon>
+                </button>
+
+                <button text-left icon-only color="secondary" class="updateButton" (click)="change()" ion-button >
+                  <p class="updateText">ACC</p>
+                  <ion-icon name="add"></ion-icon>
+                </button> -->
+                <h2>{{check.name}}</h2>
+            
+                    <ion-item>
+                      <img class="parentImage" src="{{myProducts.itemDetails.imageUrl}}" (click)="imgDetail(myProducts)">
+                      <h2 text-center text-wrap>{{myProducts.name}}</h2>
+                      <p text-center class="desc" text-wrap>{{myProducts.itemDetails.moreDetails.description}}</p>
+                      <div text-center class="quanti">
+                          <a class="quantity-text">Quantity:</a>
+                          <a class="quantity">{{myProducts.qty}}</a>
+                          
+                          <a class="quantity">{{myProducts.NA}}</a>     
+                      </div>
+
+                      <ion-buttons text-center class="doubButtons">
+                        <button class="priceButton" ion-button color="secondary" (click)="quant(item)">
+                            <h2 class="price">{{myProducts.qty * myProducts.price | currency:'₱'}}</h2>
+
+                            <h2 class="price">{{myProducts.noQty * myProducts.price | currency:'₱'}}</h2>
+                        </button>
+                      </ion-buttons>
+
+                      <ion-slides pager paginationType="progress" class="subSlider" slidesPerView="2">
+                        <ion-slide class="subSlide" *ngFor="let subItem of myProducts.itemDetails.moreDetails.subItems; let i = index;">
+                          <ion-card class="subCard">
+                            <ion-card-content>
+                                <img class="subImage" src="{{subItem.subImage}}" imageViewer>
+                                <h2 text-center class="subNameText" text-wrap>{{subItem.subName}}</h2>
+                                <h2 text-center class="subPriceText" text-wrap>{{subItem.subPrice | currency:'₱'}}</h2>
+                            </ion-card-content>
+                          </ion-card>
+                        </ion-slide>
+                      </ion-slides>
+                    </ion-item>
+            </div>
           </div>
       </ion-list>
       

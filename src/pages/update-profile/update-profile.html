@@ -1,0 +1,61 @@
+
+<ion-header [elasticHeader]="myContent">
+
+    <ion-navbar color="secondary">
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+    
+  <ion-content fullscreen #myContent>
+  
+      <ion-list>
+          <div *ngIf="birthItems">
+          <div text-wrap class="head" text-center *ngFor="let item of birthItems">
+            <img class="parentImage" src="{{myProducts.itemDetails.imageUrl}}" (click)="imgDetail(item)">
+            <h2 class="businessName">{{myProducts.name}}</h2>
+            <h2 class="businessDesc">"{{myProducts.itemDetails.moreDetails.description}}"</h2>
+            <h2 class="businessLocation"><ion-icon class="descIcon" name="pin"></ion-icon> {{myProducts.itemDetails.moreDetails.location}}</h2>
+          </div>
+        </div>
+
+        <!----------CHRISTITEMS------------>
+        <div *ngIf="christItems">
+          <div text-wrap class="head" text-center *ngFor="let item of christItems">
+            <img class="parentImage" src="{{myProducts.itemDetails.imageUrl}}" (click)="imgDetail(item)">
+            <h2 class="businessName">{{myProducts.name}}</h2>
+            <h2 class="businessDesc">"{{myProducts.itemDetails.moreDetails.description}}"</h2>
+            <h2 class="businessLocation"><ion-icon class="descIcon" name="pin"></ion-icon> {{myProducts.itemDetails.moreDetails.location}}</h2>
+          </div>
+        </div>
+
+        <!----------WEDITEMS------------>
+        <div *ngIf="wedItems">
+          <div text-wrap class="head" text-center *ngFor="let item of wedItems">
+            <img class="parentImage" src="{{myProducts.itemDetails.imageUrl}}" (click)="imgDetail(item)">
+            <h2 class="businessName">{{myProducts.name}}</h2>
+            <h2 class="businessDesc">"{{myProducts.itemDetails.moreDetails.description}}"</h2>
+            <h2 class="businessLocation"><ion-icon class="descIcon" name="pin"></ion-icon> {{myProducts.itemDetails.moreDetails.location}}</h2>
+          </div>
+        </div>
+  
+            <ion-card text-wrap *ngFor="let advertiser of advertisers">
+                <ion-fab right>
+                    <button ion-fab color="secondary" (click)="saveProfile(advertiser)">
+                        <ion-icon class="fabIcon" name="checkmark"></ion-icon> 
+                    </button>
+                </ion-fab>
+              <div class="cardCont">
+                <div class="info"> <p class="label"><ion-icon class="icn" name="person"></ion-icon>Owner:</p><input class="inputText" ion-input type="text" [(ngModel)]="advertiser.displayName" name="name"></div>
+                <div class="info"> <p class="label"><ion-icon class="icn" name="mail"></ion-icon>Email:</p><input class="inputText" ion-input type="text" [(ngModel)]="advertiser.email" name="name"></div>
+                <div class="info"> <p class="label"><ion-icon class="icn" name="person"></ion-icon>FirstName:</p><input class="inputText" ion-input type="text" [(ngModel)]="advertiser.firstName" name="name"></div>
+                <div class="info"> <p class="label"><ion-icon class="icn" name="person"></ion-icon>LastName:</p><input class="inputText" ion-input type="text" [(ngModel)]="advertiser.lastName" name="name"></div>
+                <div class="info"> <p class="label"><ion-icon class="icn" name="call"></ion-icon>Contact:</p><input class="inputText" ion-input type="text" [(ngModel)]="advertiser.contact" name="name"></div>
+              </div>
+            </ion-card>
+      </ion-list>
+  
+  </ion-content>
+  
+  

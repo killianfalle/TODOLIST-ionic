@@ -1,0 +1,83 @@
+page-update-profile {
+    .titleText{
+        margin-right: 65px;
+    }
+    .parentImage{
+        max-width: 40%!important;
+        max-height: 40%!important;
+        border-radius: 50%;
+    }
+    .businessName{
+        color:white;
+        font-family: inherit;
+        font-weight: lighter;
+        margin-bottom: -18px;
+    }
+    .businessDesc{
+        color:rgb(238, 238, 238);
+        font-family: inherit;
+        font-size: 13px!important;
+        font-weight: lighter;
+    }
+    .businessLocation{
+        margin-top: 20px!important;
+        color:white;
+        font-family: inherit;
+        font-weight: initial;
+        font-size: 12px!important;
+    }
+    .head{
+        padding-top: 30px;
+        padding-bottom: 10px;
+        background: #00ad9f!important;
+    }
+    input[type=text]{
+        margin-left:20px;
+        width:90%;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.550);
+        font-size: 17px;
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.550);
+    }
+    .header-md::after{
+        background-image:none!important;
+    }
+    .info{
+        margin-left: 5%;
+        margin-bottom: 17px;
+    }
+    .label{
+        font-size: 16px!important;
+        color:#888888!important;
+    }
+    .h2Lab{
+        margin-left: 40px;
+        font-weight: 500;
+        color:black!important;
+    }
+    .icn{
+        font-size: 15px;
+        margin-right: 5px;
+    }
+    .cardCont{
+        margin-top: 20px;
+    }
+    .item-md{
+        background-color: #f9f9f9!important;
+    }
+    .scroll-content{
+        background-color: #f9f9f9!important;
+    }
+    .fab{
+        width: 35px!important;
+        height: 35px!important;
+    }
+    .fabIcon{
+        font-size: 17px;
+    }
+    ion-fab {
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+}
