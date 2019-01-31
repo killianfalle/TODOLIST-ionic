@@ -11,8 +11,8 @@
   <ion-content fullscreen #myContent>
   
       <ion-list>
-          <div *ngIf="birthItems">
-          <div text-wrap class="head" text-center *ngFor="let item of birthItems">
+          <div *ngIf="categories">
+          <div text-wrap class="head" text-center *ngFor="let item of categories">
             <img class="parentImage" src="{{myProducts.itemDetails.imageUrl}}" (click)="imgDetail(item)">
             <h2 class="businessName">{{myProducts.name}}</h2>
             <h2 class="businessDesc">"{{myProducts.itemDetails.moreDetails.description}}"</h2>
@@ -20,26 +20,6 @@
           </div>
         </div>
 
-        <!----------CHRISTITEMS------------>
-        <div *ngIf="christItems">
-          <div text-wrap class="head" text-center *ngFor="let item of christItems">
-            <img class="parentImage" src="{{myProducts.itemDetails.imageUrl}}" (click)="imgDetail(item)">
-            <h2 class="businessName">{{myProducts.name}}</h2>
-            <h2 class="businessDesc">"{{myProducts.itemDetails.moreDetails.description}}"</h2>
-            <h2 class="businessLocation"><ion-icon class="descIcon" name="pin"></ion-icon> {{myProducts.itemDetails.moreDetails.location}}</h2>
-          </div>
-        </div>
-
-        <!----------WEDITEMS------------>
-        <div *ngIf="wedItems">
-          <div text-wrap class="head" text-center *ngFor="let item of wedItems">
-            <img class="parentImage" src="{{myProducts.itemDetails.imageUrl}}" (click)="imgDetail(item)">
-            <h2 class="businessName">{{myProducts.name}}</h2>
-            <h2 class="businessDesc">"{{myProducts.itemDetails.moreDetails.description}}"</h2>
-            <h2 class="businessLocation"><ion-icon class="descIcon" name="pin"></ion-icon> {{myProducts.itemDetails.moreDetails.location}}</h2>
-          </div>
-        </div>
-  
             <ion-card text-wrap *ngFor="let advertiser of advertisers">
                 <ion-fab right>
                     <button ion-fab color="secondary" (click)="saveProfile(advertiser)">

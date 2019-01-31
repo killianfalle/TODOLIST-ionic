@@ -59,3 +59,27 @@ ion-navbar.toolbar {
 .alert-md .alert-message{
     padding: 15px 24px 16px;
 }
+
+//LOADER
+ion-spinner {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 100px;
+}
+.loading-md .loading-wrapper {
+    color: rgba(0, 0, 0, 0)!important;
+    background: none;
+    -webkit-box-shadow: 0 16px 20px rgba(0, 0, 0, 0)!important;
+    box-shadow: 0 16px 20px rgba(0, 0, 0, 0)!important;
+}
+.loading-md .spinner-crescent circle {
+    fill: #00AD9F!important;
+}
+.loading-md .spinner-crescent circle {
+    stroke: #FF585D;
+}
+.loading-md .loading-spinner + .loading-content {
+    margin-left: 16px;
+    color: white;
+}

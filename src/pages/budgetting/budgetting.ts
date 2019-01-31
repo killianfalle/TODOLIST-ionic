@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController, LoadingController } from 'ionic-angular';
 
 import { EditPage } from '../edit/edit';
 import { Item } from '../../app/models/item';
@@ -22,6 +22,7 @@ export class BudgettingPage {
 
   checked: any;
   birthItems: any;
+  categories: any;
   christItems: any;
   wedItems: any;
   selectedItem: any;
@@ -45,6 +46,7 @@ export class BudgettingPage {
               public itemService: Service,
               public alertCtrl: AlertController,
               public afs: AngularFirestore,
+              public loadingCtrl: LoadingController
               ) {   
     // this.checked=navParams.get('data');
     // this.birthItems=navParams.get('birthItems');
@@ -62,83 +64,33 @@ export class BudgettingPage {
 
   ionViewDidLoad(){
     this.products();
+    let loading = this.loadingCtrl.create({
+      spinner: 'crescent',
+      content: 'Please Wait...',
+      duration: 1500
+    });
+      loading.present();
   }
 
   products(){
     this.token = new BehaviorSubject<string>(this.authAf.auth.currentUser.uid);
     this.idTok = this.authAf.auth.currentUser.uid;
 
-    let hala = this.token.pipe(
+    let get = this.token.pipe(
       switchMap(token => 
         this.afs
-          .collection<Item>('birthItems', ref=> ref.where('userIDs', 'array-contains', token))
+          .collection<Item>('categories', ref=> ref.where('userIDs', 'array-contains', token))
           .valueChanges()
         )
     );
 
-    let hala2 = this.token.pipe(
-      switchMap(token => 
-        this.afs
-          .collection<Item>('christItems', ref=> ref.where('userIDs', 'array-contains', token))
-          .valueChanges()
-        )
-    );
-
-    let hala3 = this.token.pipe(
-      switchMap(token => 
-        this.afs
-          .collection<Item>('wedItems', ref=> ref.where('userIDs', 'array-contains', token))
-          .valueChanges()
-        )
-    );
-
-    hala.subscribe(birthItems=>{
-      this.birthItems = birthItems
-      console.log(this.birthItems);
+    get.subscribe(categories=>{
+      this.categories = categories
+      console.log(this.categories);
 
       //TO DELETE THOSE ITEMS THAT ARE NOT INCLUDED BY THE ADVERTISER'S BUSINESS
-      for(var i=0; i<this.birthItems.length; i++){
-        var element = this.birthItems[i].itemList.itemName;
-        for(var e=0; e<element.length; e++){
-          var el = element[e].userId;
-          if(el == this.idTok){
-            this.myProducts = element[e];
-            console.log(this.myProducts);
-            // element.splice(e, 1)
-          }else{
-            console.log('Nothing.')
-          }
-        }
-      }
-    })
-
-    hala2.subscribe(christItems=>{
-      this.christItems = christItems
-      console.log(this.christItems);
-
-      //TO DELETE THOSE ITEMS THAT ARE NOT INCLUDED BY THE ADVERTISER'S BUSINESS
-      for(var i=0; i<this.christItems.length; i++){
-        var element = this.christItems[i].itemList.itemName;
-        for(var e=0; e<element.length; e++){
-          var el = element[e].userId;
-          if(el == this.idTok){
-            this.myProducts = element[e];
-            console.log(this.myProducts);
-            // element.splice(e, 1)
-          }else{
-            console.log('Nothing.')
-          }
-        }
-      }
-    })
-
-    hala3.subscribe(wedItems=>{
-      this.wedItems = wedItems
-      console.log(this.wedItems);
-
-      //TO DELETE THOSE ITEMS THAT ARE NOT INCLUDED BY THE ADVERTISER'S BUSINESS
-      for(var i=0; i<this.wedItems.length; i++){
-        var element = this.wedItems[i].itemList.itemName;
+      for(var i=0; i<this.categories.length; i++){
+        var element = this.categories[i].itemList.itemName;
         for(var e=0; e<element.length; e++){
           var el = element[e].userId;
           if(el == this.idTok){
@@ -176,9 +128,7 @@ export class BudgettingPage {
 
   edit(){
     this.navCtrl.push(EditPage, {
-      item: this.birthItems,
-      item2: this.christItems,
-      item3: this.wedItems,
+      item: this.categories,
       products: this.myProducts
     })
   }

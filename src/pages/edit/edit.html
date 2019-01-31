@@ -20,7 +20,7 @@
     <div *ngIf="birthItems">
       <div *ngFor = "let check of birthItems | filter: term; let i = index" no-padding>
           <div class="text">
-            <p class="label">Item Name: 
+            <p class="topLabel">Item Name: 
               <button class="catName" color="custom-yellow" (click)="updateItem(check)" ion-button >
                 <p class="catSave">Save</p>
               </button>
@@ -34,12 +34,12 @@
               <img class="parentImage" src="{{myProducts.itemDetails.imageUrl}}" imageViewer>
             </div> 
             <div class="text">
-              <p class="label">Product Name:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.name" name="name">
-              <p class="label">Price:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.price" name="price">
-              <p class="label">Location:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.location" name="location">
-              <p class="label">Contact:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.contact" name="contact">
-              <p class="label">Description:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.description" name="description">
-              <p class="label">Image Url:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.imageUrl" name="description">
+              <p class="label">Product Name:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.name" name="name">
+              <p class="label">Price:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.price" name="price">
+              <p class="label">Location:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.location" name="location">
+              <p class="label">Contact:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.contact" name="contact">
+              <p class="label">Description:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.description" name="description">
+              <p class="label">Image Url:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.imageUrl" name="description">
             </div>
 
             <ion-slides pager paginationType="progress" class="subSlider" slidesPerView="1">
@@ -73,12 +73,12 @@
                   </div>
                 </ion-slide>
               </ion-slides>
-            
-              <ion-fab top right>
-                <button ion-fab color="custom-yellow" class="updateButton" (click)="updateItem(check)" >
+              <ion-buttons bottom text-center>
+                <button ion-button color="custom-yellow" class="updateButton" (click)="updateItem(check)" >
                   <ion-icon class="checkIcon" name="checkmark"></ion-icon>
+                  <h3>Save</h3>
                 </button>
-              </ion-fab>
+              </ion-buttons>
         </ion-item>
       </div>
     </div>
@@ -102,12 +102,12 @@
               <img class="parentImage" src="{{myProducts.itemDetails.imageUrl}}" imageViewer>
             </div> 
             <div class="text">
-              <p class="label">Product Name:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.name" name="name">
-              <p class="label">Price:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.price" name="price">
-              <p class="label">Location:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.location" name="location">
-              <p class="label">Contact:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.contact" name="contact">
-              <p class="label">Description:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.description" name="description">
-              <p class="label">Image Url:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.imageUrl" name="description">
+              <p class="label">Product Name:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.name" name="name">
+              <p class="label">Price:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.price" name="price">
+              <p class="label">Location:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.location" name="location">
+              <p class="label">Contact:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.contact" name="contact">
+              <p class="label">Description:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.description" name="description">
+              <p class="label">Image Url:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.imageUrl" name="description">
             </div>
 
             <ion-slides pager paginationType="progress" class="subSlider" slidesPerView="1">
@@ -142,11 +142,12 @@
                 </ion-slide>
               </ion-slides>
             
-              <ion-fab bottom center>
+              <ion-buttons bottom text-center>
                 <button ion-button color="custom-yellow" class="updateButton" (click)="updateItem(check)" >
-                  <h3>save</h3>
+                  <ion-icon class="checkIcon" name="checkmark"></ion-icon>
+                  <h3>Save</h3>
                 </button>
-              </ion-fab>
+              </ion-buttons>
         </ion-item>
       </div>
     </div>
@@ -156,7 +157,7 @@
     <div *ngIf="wedItems">
       <div *ngFor = "let check of wedItems | filter: term; let i = index" no-padding>
           <div class="text">
-            <p class="label">Item Name: 
+            <p class="topLabel">Item Name: 
               <button class="catName" color="custom-yellow" (click)="updateItem(check)" ion-button >
                 <p class="catSave">Save</p>
               </button>
@@ -170,12 +171,12 @@
               <img class="parentImage" src="{{myProducts.itemDetails.imageUrl}}" imageViewer>
             </div> 
             <div class="text">
-              <p class="label">Product Name:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.name" name="name">
-              <p class="label">Price:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.price" name="price">
-              <p class="label">Location:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.location" name="location">
-              <p class="label">Contact:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.contact" name="contact">
-              <p class="label">Description:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.description" name="description">
-              <p class="label">Image Url:</p> <input class="inputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.imageUrl" name="description">
+              <p class="label">Product Name:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.name" name="name">
+              <p class="label">Price:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.price" name="price">
+              <p class="label">Location:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.location" name="location">
+              <p class="label">Contact:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.contact" name="contact">
+              <p class="label">Description:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.moreDetails.description" name="description">
+              <p class="label">Image Url:</p> <input class="topInputText" ion-input type="text" [(ngModel)]="myProducts.itemDetails.imageUrl" name="description">
             </div>
 
             <ion-slides pager paginationType="progress" class="subSlider" slidesPerView="1">
@@ -210,11 +211,12 @@
                 </ion-slide>
               </ion-slides>
             
-              <ion-fab top right>
-                <button ion-fab color="custom-yellow" class="updateButton" (click)="updateItem(check)" >
+              <ion-buttons bottom text-center>
+                <button ion-button color="custom-yellow" class="updateButton" (click)="updateItem(check)" >
                   <ion-icon class="checkIcon" name="checkmark"></ion-icon>
+                  <h3>Save</h3>
                 </button>
-              </ion-fab>
+              </ion-buttons>
         </ion-item>
       </div>
     </div>

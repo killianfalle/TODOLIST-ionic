@@ -15,9 +15,7 @@ import { RegisterPage } from '../register/register';
 })
 export class HomePage {
 
-  birthItems: any;
-  christItems: any;
-  wedItems: any;
+  categories: any;
   advertisers: any;
 
   user = {} as User;
@@ -37,9 +35,9 @@ export class HomePage {
                 //to disable side-menu on login page 
                 this.menu.enable(false, 'myMenu');
 
-                this.service.getBirthItems().subscribe(birthItems => {
-                  this.birthItems = birthItems;
-                  console.log(this.birthItems);
+                this.service.getCategories().subscribe(categories => {
+                  this.categories = categories;
+                  console.log(this.categories);
                 });
 
                 this.service.getAdvertisers().subscribe(advertisers => {
@@ -63,12 +61,11 @@ export class HomePage {
       this.authAf.auth.signInWithEmailAndPassword(user.email, user.password)
         .then(data=>{
                   this.navCtrl.setRoot(BudgettingPage,{
-                    birthItems: this.birthItems,
+                    categories: this.categories,
                     advertisers: this.advertisers
                   });
         
                   this.toast('Welcome! ');
-                  this.alert('Select an inclusion(s) that you want to update.');
         })
         .catch(error =>{
           let alert = this.alertCtrl.create({
@@ -92,9 +89,8 @@ export class HomePage {
       this.service.googleLogin()
       .then(data=>{
         this.navCtrl.setRoot(BudgettingPage,{
-          birthItems: this.birthItems
-        });
-        this.alert('Select an item/product that you want to update.');
+          categories: this.categories
+        })
         })
         .catch(error =>{
         let alert = this.alertCtrl.create({

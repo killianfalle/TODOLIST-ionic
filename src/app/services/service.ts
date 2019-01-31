@@ -18,6 +18,7 @@ export class Service {
   itemDoc: AngularFirestoreDocument<Item>;
   advertiserDoc: AngularFirestoreDocument<User>;
   birthItems: Observable<Item[]>;
+  categories: Observable<Item[]>;
   christItems: Observable<Item[]>;
   wedItems: Observable<Item[]>;
 
@@ -32,6 +33,18 @@ export class Service {
     this.itemsCollection = this.afs.collection('birthItems');
     this.advertisersCollection = this.afs.collection('advertisers');
     
+
+    // this.itemsCollection.snapshotChanges().map(changes=>{
+    //   return changes.map(a=>{
+    //       const data = a.payload.doc.data();
+    //       const id = a.payload.doc.id;
+    //       return {id, ...data}
+    //   })
+    // }).subscribe(items=>{
+    //     items.forEach(job=>{
+    //         this.afs.doc(`birthItems/${job.id}`).update({name:'asd'});
+    //     })
+    //  });
     // this.itemsCollection = this.afs.collection('christItems');
     // this.itemsCollection = this.afs.collection('wedItems');
 
@@ -104,19 +117,21 @@ export class Service {
   }
 
   updateItem(item: Item){
-    if(item.collectionName == 'birthItems'){
-      this.itemDoc = this.afs.doc(`birthItems/` + item.id);
-      this.itemDoc.update(item)
-      return false;
-    }else if(item.collectionName == 'christItems'){
-      this.itemDoc = this.afs.doc(`christItems/` + item.id);
-      this.itemDoc.update(item)
-      return false;
-    }else if(item.collectionName == 'wedItems'){
-      this.itemDoc = this.afs.doc(`wedItems/` + item.id);
-      this.itemDoc.update(item)
-      return false;
-    }
+    this.itemDoc = this.afs.doc(item.collectionName + '/' + item.id)
+    this.itemDoc.update(item)
+    // if(item.collectionName == 'birthItems'){
+    //   this.itemDoc = this.afs.doc(`birthItems/` + item.id);
+    //   this.itemDoc.update(item)
+    //   return false;
+    // }else if(item.collectionName == 'christItems'){
+    //   this.itemDoc = this.afs.doc(`christItems/` + item.id);
+    //   this.itemDoc.update(item)
+    //   return false;
+    // }else if(item.collectionName == 'wedItems'){
+    //   this.itemDoc = this.afs.doc(`wedItems/` + item.id);
+    //   this.itemDoc.update(item)
+    //   return false;
+    // }
   }
 
   updateAdvertiser(advertiser: User){
@@ -138,6 +153,10 @@ export class Service {
 
   getBirthItems(){
     return this.afs.collection('birthItems').valueChanges();
+  }
+
+  getCategories(){
+    return this.afs.collection('categories').valueChanges();
   }
 
   getProducts(){
